@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:ecommerce_shop/components/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -45,9 +43,12 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         leading: Builder(builder: (context) {
           return IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
+            icon: const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
             ),
             onPressed: () {
               Scaffold.of(context).openDrawer();
