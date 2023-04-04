@@ -1,4 +1,6 @@
+import 'package:ecommerce_shop/models/cart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../components/product_tile.dart';
 
@@ -10,75 +12,122 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  void addProductToCart(Product product) {
+    Provider.of<Cart>(context, listen: false).addItemToCart(product);
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Successfully",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    SizedBox(
+                      width: 2.0,
+                    ),
+                    Icon(
+                      Icons.check_box_rounded,
+                      color: Colors.green,
+                      size: 16.0,
+                    ),
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    "Check your cart",
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+        // icon: Icon(Icons.check),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(12.0),
-          margin: const EdgeInsets.symmetric(horizontal: 25),
-          decoration: BoxDecoration(
-              color: Colors.grey[100], borderRadius: BorderRadius.circular(8)),
-          child: Row(
+    return Consumer<Cart>(
+      builder: (context, value, child) => Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12.0),
+            margin: const EdgeInsets.symmetric(horizontal: 25),
+            decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(8)),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    'Search',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  )
+                ]),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: Text(
+              'Make your own rules, Live your best life in Supreme.',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: const [
-                Text(
-                  'Search',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                )
-              ]),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 20.0),
-          child: Text(
-            'Make your own rules, Live your best life in Supreme.',
-            style: TextStyle(color: Colors.grey),
+                Text('Hot picks🔥',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold)),
+                Text('See all', style: TextStyle(color: Colors.blue)),
+              ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: const [
-              Text('Hot picks🔥',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold)),
-              Text('See all', style: TextStyle(color: Colors.blue)),
-            ],
+          const SizedBox(
+            height: 10,
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Expanded(
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 4,
-              itemBuilder: (context, index) {
-                Product product = Product(
-                    name: 'Jacket',
-                    price: '300',
-                    description: 'Jacket beautiful in the world',
-                    imgPath: 'assets/images/1.png');
-                return ProductTile(
-                  product: product,
-                );
-              }),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
-          child: Divider(
-            color: Colors.grey[300],
+          Expanded(
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  Product product = value.getProductList()[index];
+                  return ProductTile(
+                    product: product,
+                    onTap: () => addProductToCart(product),
+                  );
+                }),
           ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
+            child: Divider(
+              color: Colors.grey[300],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
