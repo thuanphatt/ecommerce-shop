@@ -4,26 +4,25 @@ import 'package:flutter/material.dart';
 class Cart extends ChangeNotifier {
   List<Product> products = [
     Product(
-        name: 'Shirt',
+        name: 'Flannel Shirt',
         price: '500',
         description: 'Best seller shirt in the year',
         imgPath: 'assets/images/2.png'),
     Product(
-        name: "T-Shirt",
+        name: "Face Tee",
         price: "1000",
         description: "All cotton classic Supreme t-shirt with printed graphic ",
         imgPath: 'assets/images/3.png'),
     Product(
-        name: "Jean",
+        name: "Chain Zippo®",
         price: "2000",
-        description:
-            "All cotton 13 oz. denim with zip-off flannel shirtsleeves at waist",
-        imgPath: "assets/images/4.png"),
+        description: "Zippo® with debossed logo and removable 20 chain.",
+        imgPath: "assets/images/5.png"),
     Product(
-        name: "Track Pant",
-        price: "2200",
+        name: "Field Backpack",
+        price: "5500",
         description: "Water resistant nylon ripstop with embroidered pattern",
-        imgPath: "assets/images/5.png")
+        imgPath: "assets/images/7.png")
   ];
   // list of products in user cart
   List<Product> userCart = [];
@@ -33,7 +32,7 @@ class Cart extends ChangeNotifier {
   }
 
   // get cart
-  List<Product> getCart() {
+  List<Product> getUserCart() {
     return userCart;
   }
 
