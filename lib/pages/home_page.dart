@@ -73,19 +73,25 @@ class _HomePageState extends State<HomePage> {
                     'assets/images/logo.png',
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 25.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
-                    leading: Icon(color: Colors.black, Icons.home),
-                    title: Text('Home'),
-                  ),
+                      leading: const Icon(color: Colors.black, Icons.home),
+                      title: const Text('Home'),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()))),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 25.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
-                    leading: Icon(color: Colors.black, Icons.info),
-                    title: Text('About'),
-                  ),
+                      leading: const Icon(color: Colors.black, Icons.info),
+                      title: const Text('About'),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AboutPage()))),
                 ),
               ],
             ),

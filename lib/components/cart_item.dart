@@ -36,7 +36,7 @@ class _CartItemState extends State<CartItem> {
           widget.product.imgPath,
         ),
         title: Text(widget.product.name),
-        subtitle: Text(widget.product.price),
+        subtitle: Text('\$${widget.product.price}'),
         trailing: IconButton(
             icon: const Icon(Icons.delete), onPressed: removeItemFromCart),
       ),

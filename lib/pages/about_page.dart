@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -10,6 +11,72 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('About Page'));
+    return Scaffold(
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'About us',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Image.asset(
+                "assets/images/about.png",
+              ),
+            ),
+            const Center(
+              child: Text(
+                "The Supreme shop on lafayette in 2000",
+                style: TextStyle(fontSize: 14),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Text(
+                "Supreme is an American clothing and skateboarding lifestyle brand established in New York City in April 1994.",
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+            ),
+            // Text(
+            //     "The brand aims to appeal to youth culture in general as well as the skateboarding and hip hop scenes specifically. The company makes skateboards in addition to clothing and accessories."),
+            Row(
+              children: const [
+                Text(
+                  'Contact us',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24),
+                )
+              ],
+            ),
+            const ListTile(
+              leading: Icon(Icons.location_on),
+              title: Text('Binh Thuy'),
+              subtitle: Text('Can Tho, Viet Nam'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('(123) 456-7890'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.email),
+              title: const Text('thphatt@gmail.com'),
+              onTap: () => launchUrl(Uri(
+                scheme: 'mailto',
+                path: 'thphatt@gmail.com',
+              )),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

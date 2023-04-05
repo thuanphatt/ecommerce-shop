@@ -106,7 +106,7 @@ class _ShopPageState extends State<ShopPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: const [
-          Text('Best sellers',
+          Text('Most Popular',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,

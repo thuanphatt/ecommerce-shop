@@ -24,7 +24,7 @@ class MyBottomNavbar extends StatelessWidget {
               text: 'Shop',
             ),
             GButton(icon: Icons.shopping_bag_rounded, gap: 6, text: 'Cart'),
-            GButton(icon: Icons.info_rounded, gap: 6, text: 'Info'),
+            GButton(icon: Icons.info_rounded, gap: 6, text: 'About'),
           ]),
     );
   }
