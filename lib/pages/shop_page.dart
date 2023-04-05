@@ -64,25 +64,7 @@ class _ShopPageState extends State<ShopPage> {
     return Consumer<Cart>(
       builder: (context, value, child) => Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(12.0),
-            margin: const EdgeInsets.symmetric(horizontal: 25),
-            decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8)),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
-                    'Search',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  Icon(
-                    Icons.search,
-                    color: Colors.grey,
-                  )
-                ]),
-          ),
+          _searchInputSection(),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0),
             child: Text(
@@ -90,28 +72,14 @@ class _ShopPageState extends State<ShopPage> {
               style: TextStyle(color: Colors.grey),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: const [
-                Text('Hot picks🔥',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold)),
-                Text('See all', style: TextStyle(color: Colors.blue)),
-              ],
-            ),
-          ),
+          _hotpickSection(),
           const SizedBox(
             height: 10,
           ),
           Expanded(
             child: ListView.builder(
-                scrollDirection: Axis.horizontal,
                 itemCount: 4,
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   Product product = value.getProductList()[index];
                   return ProductTile(
@@ -128,6 +96,45 @@ class _ShopPageState extends State<ShopPage> {
           )
         ],
       ),
+    );
+  }
+
+  Padding _hotpickSection() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Text('Best sellers',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold)),
+          Text('See all', style: TextStyle(color: Colors.blue)),
+        ],
+      ),
+    );
+  }
+
+  Container _searchInputSection() {
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      margin: const EdgeInsets.symmetric(horizontal: 25),
+      decoration: BoxDecoration(
+          color: Colors.grey[100], borderRadius: BorderRadius.circular(8)),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            Text(
+              'Search',
+              style: TextStyle(color: Colors.grey),
+            ),
+            Icon(
+              Icons.search,
+              color: Colors.grey,
+            )
+          ]),
     );
   }
 }

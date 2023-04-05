@@ -39,6 +39,11 @@ class _HomePageState extends State<HomePage> {
         onTabChange: (index) => navigateBottomBar(index),
       ),
       appBar: AppBar(
+        title: Image.asset(
+          'assets/images/logo.png',
+          width: 120,
+        ),
+        centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Builder(builder: (context) {

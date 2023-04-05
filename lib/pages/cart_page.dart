@@ -2,7 +2,6 @@ import 'package:ecommerce_shop/models/cart.dart';
 import 'package:ecommerce_shop/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../components/cart_item.dart';
 
 class CartPage extends StatefulWidget {
@@ -21,11 +20,11 @@ class _CartPageState extends State<CartPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'My cart',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Expanded(
                 child: ListView.builder(
               itemCount: value.getUserCart().length,
