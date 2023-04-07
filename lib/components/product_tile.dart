@@ -24,7 +24,10 @@ class ProductTile extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8.0),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(product.imgPath)),
+                child: Image.asset(
+                  product.imgPath,
+                  height: 260,
+                )),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),

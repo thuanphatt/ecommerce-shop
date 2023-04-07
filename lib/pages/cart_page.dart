@@ -14,8 +14,30 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<Cart>(
-      builder: (context, value, child) => Padding(
+    return Consumer<Cart>(builder: (context, value, child) {
+      final List<Product> cartItems = value.getUserCart();
+      if (cartItems.isEmpty) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'My cart',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 300),
+              Center(
+                child: Text(
+                  'Your cart is empty !',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+      return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +59,7 @@ class _CartPageState extends State<CartPage> {
             ))
           ],
         ),
-      ),
-    );
+      );
+    });
   }
 }
