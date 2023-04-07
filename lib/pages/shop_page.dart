@@ -6,12 +6,12 @@ import '../components/product_tile.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
-
   @override
   State<ShopPage> createState() => _ShopPageState();
 }
 
 class _ShopPageState extends State<ShopPage> {
+  bool showAllProducts = false;
   void addProductToCart(Product product) {
     Provider.of<Cart>(context, listen: false).addItemToCart(product);
     showDialog(
@@ -78,7 +78,7 @@ class _ShopPageState extends State<ShopPage> {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: 4,
+                itemCount: showAllProducts ? value.getProductList().length : 4,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   Product product = value.getProductList()[index];
@@ -105,16 +105,30 @@ class _ShopPageState extends State<ShopPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
+        children: [
           Text('Most Popular',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.bold)),
-          Text('See all', style: TextStyle(color: Colors.blue)),
+          Container(
+            height: 20,
+            child: IconButton(
+              onPressed: seeAllProducts,
+              icon: Text('See all', style: TextStyle(color: Colors.blue)),
+              padding: EdgeInsets.all(0),
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  void seeAllProducts() {
+    setState(() {
+      showAllProducts = true;
+      print(showAllProducts);
+    });
   }
 
   Container _searchInputSection() {

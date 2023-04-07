@@ -30,7 +30,7 @@ class ProductTile extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Text(
               product.description,
-              style: const TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey, fontSize: 14),
             ),
           ),
           Padding(
