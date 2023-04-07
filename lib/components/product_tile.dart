@@ -1,6 +1,7 @@
 import 'package:ecommerce_shop/models/product.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ProductTile extends StatelessWidget {
   void Function()? onTap;
   Product product;

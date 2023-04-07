@@ -3,6 +3,7 @@ import 'package:ecommerce_shop/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class CartItem extends StatefulWidget {
   Product product;
   CartItem({super.key, required, required this.product});

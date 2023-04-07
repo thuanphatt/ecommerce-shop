@@ -106,17 +106,20 @@ class _ShopPageState extends State<ShopPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text('Most Popular',
+          const Text('Most Popular',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.bold)),
-          Container(
+          SizedBox(
             height: 20,
             child: IconButton(
               onPressed: seeAllProducts,
-              icon: Text('See all', style: TextStyle(color: Colors.blue)),
-              padding: EdgeInsets.all(0),
+              icon: !showAllProducts
+                  ? const Text('See all', style: TextStyle(color: Colors.blue))
+                  : const Text('See all',
+                      style: TextStyle(color: Colors.purple)),
+              padding: const EdgeInsets.all(0),
             ),
           ),
         ],
@@ -127,7 +130,6 @@ class _ShopPageState extends State<ShopPage> {
   void seeAllProducts() {
     setState(() {
       showAllProducts = true;
-      print(showAllProducts);
     });
   }
 

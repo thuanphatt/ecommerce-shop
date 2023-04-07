@@ -69,15 +69,14 @@ class _CartPageState extends State<CartPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Total: \$${total.toStringAsFixed(0)}',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Colors.red[600], // background (button) color
-                    foregroundColor: Colors.white, // foreground (text) color
+                    backgroundColor: Colors.red[600],
+                    foregroundColor: Colors.white,
                   ),
                   onPressed: () {
                     value.clearCart();
@@ -85,7 +84,7 @@ class _CartPageState extends State<CartPage> {
                       total = 0;
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     'Checkout',
                     style: TextStyle(
                       color: Colors.white,

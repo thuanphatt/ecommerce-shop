@@ -57,14 +57,17 @@ class _AboutPageState extends State<AboutPage> {
                 )
               ],
             ),
-            const ListTile(
-              leading: Icon(Icons.location_on),
-              title: Text('Binh Thuy'),
-              subtitle: Text('Can Tho, Viet Nam'),
+            ListTile(
+              leading: const Icon(Icons.location_on),
+              title: const Text('Binh Thuy'),
+              subtitle: const Text('Can Tho, Viet Nam'),
+              onTap: () => launchUrl(Uri.parse(
+                  'https://www.google.com/maps/d/embed?mid=1DPhdGChjMtier-yWCPVNynsQYXo&hl=vi&ehbc=2E312F')),
             ),
-            const ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('(123) 456-7890'),
+            ListTile(
+              leading: const Icon(Icons.phone),
+              title: const Text('(123) 456-7890'),
+              onTap: () => launchUrl(Uri(scheme: 'tel', path: '1234567890')),
             ),
             ListTile(
               leading: const Icon(Icons.email),
