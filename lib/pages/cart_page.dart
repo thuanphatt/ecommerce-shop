@@ -16,6 +16,10 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Consumer<Cart>(builder: (context, value, child) {
       final List<Product> cartItems = value.getUserCart();
+      double total = 0.0;
+      for (Product product in value.getUserCart()) {
+        total += product.price;
+      }
       if (cartItems.isEmpty) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -48,15 +52,48 @@ class _CartPageState extends State<CartPage> {
             ),
             const SizedBox(height: 10.0),
             Expanded(
-                child: ListView.builder(
-              itemCount: value.getUserCart().length,
-              itemBuilder: (context, index) {
-                Product individuaProduct = value.getUserCart()[index];
-                return CartItem(
-                  product: individuaProduct,
-                );
-              },
-            ))
+              child: ListView.builder(
+                itemCount: value.getUserCart().length,
+                itemBuilder: (context, index) {
+                  Product individuaProduct = value.getUserCart()[index];
+                  return CartItem(
+                    product: individuaProduct,
+                  );
+                },
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Total: \$${total.toStringAsFixed(0)}',
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        Colors.red[600], // background (button) color
+                    foregroundColor: Colors.white, // foreground (text) color
+                  ),
+                  onPressed: () {
+                    value.clearCart();
+                    setState(() {
+                      total = 0;
+                    });
+                  },
+                  child: Text(
+                    'Checkout',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       );
