@@ -24,14 +24,18 @@ class IntroPage extends StatelessWidget {
             ),
             const Text(
               'Your style, your rules.',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontFamily: "Roboto",
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 24,
             ),
             const Text(
               'Be unique, be classic. A touch of Supreme can make any outfit pop.',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              style: TextStyle(
+                  fontFamily: "Roboto", fontSize: 16, color: Colors.grey),
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -50,6 +54,7 @@ class IntroPage extends StatelessWidget {
                     'Shop Now',
                     style: TextStyle(
                         color: Colors.white,
+                        fontFamily: "Roboto",
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),

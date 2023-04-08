@@ -12,52 +12,8 @@ class ShopPage extends StatefulWidget {
 
 class _ShopPageState extends State<ShopPage> {
   bool showAllProducts = false;
-  void addProductToCart(Product product) {
-    Provider.of<Cart>(context, listen: false).addItemToCart(product);
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Successfully",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                    SizedBox(
-                      width: 2.0,
-                    ),
-                    Icon(
-                      Icons.check_box_rounded,
-                      color: Colors.green,
-                      size: 16.0,
-                    ),
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    "Check your cart",
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-        // icon: Icon(Icons.check),
-      ),
-    );
-  }
+
+  // hanlde search input
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +25,7 @@ class _ShopPageState extends State<ShopPage> {
             padding: EdgeInsets.symmetric(vertical: 20.0),
             child: Text(
               'Make your own rules, Live your best life in Supreme.',
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Colors.grey, fontFamily: "Roboto"),
             ),
           ),
           _hotpickSection(),
@@ -99,6 +55,54 @@ class _ShopPageState extends State<ShopPage> {
     );
   }
 
+  void addProductToCart(Product product) {
+    Provider.of<Cart>(context, listen: false).addItemToCart(product);
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Successfully",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Roboto",
+                          fontSize: 16),
+                    ),
+                    SizedBox(
+                      width: 2.0,
+                    ),
+                    Icon(
+                      Icons.check_box_rounded,
+                      color: Colors.green,
+                      size: 16.0,
+                    ),
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    "Check your cart",
+                    style: TextStyle(fontSize: 14, fontFamily: "Roboto"),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+        // icon: Icon(Icons.check),
+      ),
+    );
+  }
+
   Padding _hotpickSection() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -110,15 +114,19 @@ class _ShopPageState extends State<ShopPage> {
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
+                  fontFamily: "Roboto",
                   fontWeight: FontWeight.bold)),
           SizedBox(
             height: 20,
             child: IconButton(
               onPressed: seeAllProducts,
               icon: !showAllProducts
-                  ? const Text('See all', style: TextStyle(color: Colors.blue))
+                  ? const Text('See all',
+                      style:
+                          TextStyle(color: Colors.blue, fontFamily: "Roboto"))
                   : const Text('See all',
-                      style: TextStyle(color: Colors.purple)),
+                      style: TextStyle(
+                          color: Colors.purple, fontFamily: "Roboto")),
               padding: const EdgeInsets.all(0),
             ),
           ),
@@ -144,7 +152,7 @@ class _ShopPageState extends State<ShopPage> {
           children: const [
             Text(
               'Search',
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Colors.grey, fontFamily: "Roboto"),
             ),
             Icon(
               Icons.search,

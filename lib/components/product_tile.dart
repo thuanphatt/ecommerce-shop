@@ -54,7 +54,8 @@ class ProductTile extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       "\$${product.price}",
-                      style: const TextStyle(color: Colors.grey),
+                      style: const TextStyle(
+                          color: Colors.grey, fontFamily: "Roboto"),
                     ),
                   ],
                 ),

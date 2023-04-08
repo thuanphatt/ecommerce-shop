@@ -28,13 +28,16 @@ class _CartPageState extends State<CartPage> {
             children: const [
               Text(
                 'My cart',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Roboto"),
               ),
               SizedBox(height: 300),
               Center(
                 child: Text(
                   'Your cart is empty !',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, fontFamily: "Roboto"),
                 ),
               ),
             ],
@@ -48,7 +51,10 @@ class _CartPageState extends State<CartPage> {
           children: [
             const Text(
               'My cart',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Roboto"),
             ),
             const SizedBox(height: 10.0),
             Expanded(
@@ -70,7 +76,9 @@ class _CartPageState extends State<CartPage> {
                   child: Text(
                     'Total: \$${total.toStringAsFixed(0)}',
                     style: const TextStyle(
-                        fontSize: 20.0, fontWeight: FontWeight.bold),
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Roboto"),
                   ),
                 ),
                 ElevatedButton(
@@ -86,9 +94,7 @@ class _CartPageState extends State<CartPage> {
                   },
                   child: const Text(
                     'Checkout',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+                    style: TextStyle(color: Colors.white, fontFamily: "Roboto"),
                   ),
                 ),
               ],

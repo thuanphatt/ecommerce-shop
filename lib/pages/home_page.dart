@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
 
   // this method will update selected index
   // when the user tap on bottom bar
-
   void navigateBottomBar(index) {
     setState(() {
       _selectedIndex = index;
@@ -77,7 +76,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
                       leading: const Icon(color: Colors.black, Icons.home),
-                      title: const Text('Home'),
+                      title: const Text('Home',
+                          style: TextStyle(fontFamily: "Roboto")),
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -87,7 +87,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 25.0),
                   child: ListTile(
                       leading: const Icon(color: Colors.black, Icons.info),
-                      title: const Text('About'),
+                      title: const Text('About',
+                          style: TextStyle(fontFamily: "Roboto")),
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -99,7 +100,10 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.only(left: 25.0, bottom: 25.0),
               child: ListTile(
                 leading: Icon(color: Colors.black, Icons.logout),
-                title: Text('Logout'),
+                title: Text(
+                  'Logout',
+                  style: TextStyle(fontFamily: "Roboto"),
+                ),
               ),
             ),
           ],
