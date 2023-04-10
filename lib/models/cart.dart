@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:ecommerce_shop/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Cart extends ChangeNotifier {
   List<Product> products = [
@@ -80,6 +83,7 @@ class Cart extends ChangeNotifier {
   // add item to cart
   void addItemToCart(Product product) {
     userCart.add(product);
+    setCartItem(userCart);
     notifyListeners();
   }
 
@@ -90,6 +94,12 @@ class Cart extends ChangeNotifier {
   // remove item from cart
   void removeItemFromCart(Product product) {
     userCart.remove(product);
+    setCartItem(userCart);
     notifyListeners();
   }
+}
+
+void setCartItem(List<Product> cartItem) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString('cart', json.encode(cartItem));
 }
