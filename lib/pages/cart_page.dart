@@ -97,6 +97,7 @@ class _CartPageState extends State<CartPage> {
                         foregroundColor: Colors.white,
                       ),
                       onPressed: () {
+                        print(cartItems);
                         value.clearCart();
                         setState(() {
                           total = 0;
@@ -117,14 +118,14 @@ class _CartPageState extends State<CartPage> {
       );
     });
   }
+}
 
-  Future<List<Product>?> getCartItem() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('cart') != null
-        ? List.castFrom<dynamic, Product>(json
-            .decode(prefs.getString('cart') ?? '')
-            .map((data) => Product.fromJson(data))
-            .toList())
-        : null;
-  }
+Future<List<Product>?> getCartItem() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getString('cart') != null
+      ? List.castFrom<dynamic, Product>(json
+          .decode(prefs.getString('cart') ?? '')
+          .map((data) => Product.fromJson(data))
+          .toList())
+      : null;
 }

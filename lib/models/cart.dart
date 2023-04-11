@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ecommerce_shop/models/product.dart';
+import 'package:ecommerce_shop/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -88,14 +89,21 @@ class Cart extends ChangeNotifier {
   }
 
   void clearCart() {
-    return userCart.clear();
+    userCart.clear();
+    setCartItem(userCart);
+    notifyListeners();
   }
 
   // remove item from cart
-  void removeItemFromCart(Product product) {
-    userCart.remove(product);
-    setCartItem(userCart);
-    notifyListeners();
+  void removeItemFromCart(Product product) async {
+    final List<Product> userCart = await getCartItem() ?? [];
+    final index = userCart.indexWhere((item) => item.id == product.id);
+    if (index != -1) {
+      userCart.removeAt(index);
+      clearCart();
+      setCartItem(userCart);
+      notifyListeners();
+    }
   }
 }
 
