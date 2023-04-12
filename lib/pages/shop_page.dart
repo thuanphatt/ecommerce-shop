@@ -98,7 +98,6 @@ class _ShopPageState extends State<ShopPage> {
             ),
           )
         ],
-        // icon: Icon(Icons.check),
       ),
     );
   }

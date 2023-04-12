@@ -25,7 +25,6 @@ class _CartPageState extends State<CartPage> {
           if (snapshot.hasData) {
             cartItems = snapshot.data as List<Product>;
           }
-
           if (cartItems.isEmpty) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
